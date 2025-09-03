@@ -6,13 +6,10 @@ import humidityIcon from "../assets/humidity-icon.png"
 import rainIcon from "../assets/rain-icon.png"
 import snowhIcon from "../assets/snow-icon.png"
 import windIcon from "../assets/wind-icon.png"
-import cities from "../components/Cities.json"
 import { useEffect, useRef, useState } from "react"
 
-function Weather() {
+function ApisearchOnly() {
   const [weatherData, setWeatherData] = useState({})
-  const [query, setQuery] = useState("")
-  const [suggestions, setSuggestions] = useState([])
   const inputRef = useRef()
 
   const allIcons = {
@@ -65,26 +62,6 @@ function Weather() {
     }
   }
 
-  const handleInputChange = (e) => {
-    const value = e.target.value
-    setQuery(value)
-
-    if (value.length > 0) {
-      const filtered = cities.filter((city) =>
-        city.capital.toLowerCase().startsWith(value.toLowerCase())
-      )
-      setSuggestions(filtered)
-    } else {
-      setSuggestions([])
-    }
-  }
-
-  const handleSelect = (cityName) => {
-    setQuery(cityName)
-    setSuggestions([])
-    search(cityName)
-  }
-
   useEffect(() => {
     search("estanbul")
   }, [])
@@ -96,34 +73,17 @@ function Weather() {
         <div className="flex items-center gap-3 mb-8">
           <input
             className="flex-1 h-12 rounded-full pl-5 pr-4 text-gray-700 text-lg bg-[#ebfffc] outline-none placeholder:text-gray-400"
-            // ref={inputRef}
+            ref={inputRef}
             type="text"
-            value={query}
-            onChange={handleInputChange}
             placeholder="Search city..."
           />
           <img
             className="h-12 w-12 p-3 rounded-full bg-[#ebfffc] cursor-pointer hover:scale-105 transition"
             src={searchIcon}
             alt="Search Icon"
-            onClick={() => search(query)}
+            onClick={() => search(inputRef.current.value)}
           />
         </div>
-        {/*Suggestions dropdown */}
-
-        {suggestions.length > 0 && (
-          <ul className="absolute top-14 mt-16 left-10 right-10 bg-white shadow-lg rounded-lg z-10">
-            {suggestions.map((city, index) => (
-              <li
-                key={index}
-                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                onClick={() => handleSelect(city.capital)}
-              >
-                {city.capital}-{city.country}
-              </li>
-            ))}
-          </ul>
-        )}
 
         {weatherData ? (
           <>
@@ -174,5 +134,4 @@ function Weather() {
     </div>
   )
 }
-
-export default Weather
+export default ApisearchOnly
