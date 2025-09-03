@@ -13,21 +13,27 @@ function Weather() {
   const [weatherData, setWeatherData] = useState({})
   const [query, setQuery] = useState("")
   const [suggestions, setSuggestions] = useState([])
-  const inputRef = useRef()
 
   const allIcons = {
+    //Clear sky
     "01d": clearIcon,
     "01n": clearIcon,
+    //Few clouds
     "02d": cloudIcon,
     "02n": cloudIcon,
+    //Scattered clouds
     "03d": cloudIcon,
     "03n": cloudIcon,
+    //Shower rain
     "04d": drizzlehIcon,
     "04n": drizzlehIcon,
+    //Rain
     "09d": rainIcon,
     "09n": rainIcon,
+    //Thunderstorem
     "10d": rainIcon,
     "10n": rainIcon,
+    //snow
     "13d": snowhIcon,
     "13n": snowhIcon,
   }
@@ -112,7 +118,7 @@ function Weather() {
         {/*Suggestions dropdown */}
 
         {suggestions.length > 0 && (
-          <ul className="absolute top-14 mt-16 left-10 right-10 bg-white shadow-lg rounded-lg z-10">
+          <ul className="w-full max-h-48 overflow-y-auto bg-white shadow-lg rounded-lg mt-2">
             {suggestions.map((city, index) => (
               <li
                 key={index}
