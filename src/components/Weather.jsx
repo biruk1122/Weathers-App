@@ -96,8 +96,8 @@ function Weather() {
   }, [])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#e2d4ff]">
-      <div className="w-full max-w-md p-8 rounded-2xl shadow-lg bg-[linear-gradient(45deg,#2f4680,#500ae4)]">
+    <div className="h-screen flex items-center justify-center bg-[#e2d4ff]">
+      <div className="w-full max-w-md h-full p-16 rounded-2xl shadow-lg bg-[linear-gradient(45deg,#2f4680,#500ae4)]">
         {/* Search Bar */}
         <div className="flex items-center gap-3 mb-8">
           <input
