@@ -17,7 +17,7 @@ It fetches real-time weather data using the **OpenWeatherMap API** and provides 
 
 ## 📸 Demo
 
-<img src="src/assets/Screenshot_image.PNG" alt='Screenshot Image'>
+<img src="src/assets/Screeenshot_image.PNG" alt='Screenshot Image'>
 
 ---
 
